@@ -1,10 +1,10 @@
-
 # Copies systemd-boot image to the shim folder then sign it.
 # x86-64 only!
 [Trigger]
 Operation = Install
 Operation = Upgrade
-Target = shim-signed
+Type = Package
+Target = systemd
 
 [Action]
 Description = Copying sd-boot and signing it with shim keys...
