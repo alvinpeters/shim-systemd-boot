@@ -1,0 +1,12 @@
+# Installs shim-signed into the EFI system partition after shim-signed installation/update.
+# shim packagge should have added a pacman hook itself but oh well...
+# x86-64 only!
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Target = shim-signed
+
+[Action]
+Description = Installing updated signed shim into the ESP...
+When = PostTransaction
+Exec = /usr/bin/mkdir /usr/bin/cp /usr/share/shim-signed/ 
