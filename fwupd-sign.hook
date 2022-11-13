@@ -1,0 +1,13 @@
+# Signs fwupd boot image
+# x86-64 only!
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Type = Path
+Target = usr/lib/fwupd/efi/fwupdx64.efi
+
+[Action]
+Description = Signing fwupd EFI image with the machine owner keys.
+When = PostTransaction
+Exec = /usr/bin/sbsign --key /usr/share/mok/MOK.key --cert /usr/share/mok/MOK.crt /usr/lib/fwupd/efi/fwupdx64.efi
+Depends = sbsigntools
