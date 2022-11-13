@@ -9,4 +9,4 @@ Target = shim-signed
 [Action]
 Description = Installing updated signed shim into the ESP...
 When = PostTransaction
-Exec = /usr/bin/mkdir /usr/bin/cp /usr/share/shim-signed/ 
+Exec = /usr/bin/mkdir -p /boot/EFI/arch && /usr/bin/cp /usr/share/shim-signed/{shimx64,mmx64}.efi /boot/EFI/arch
