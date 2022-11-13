@@ -1,0 +1,14 @@
+
+# Copies systemd-boot image to the shim folder then sign it.
+# x86-64 only!
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Target = shim-signed
+
+[Action]
+Description = Copying sd-boot and signing it with shim keys...
+When = PostTransaction
+Exec = /usr/bin/mkdir -p /boot/EFI/arch && /usr/bin/cp /boot/EFI/systemd/systemd-bootx64.efi /boot/EFI/arch/grubx64.efi && /usr/bin/sbsign --sbsign --key MOK.key --cert MOK.crt --output /boot/EFI/arch/grubx64.efi /boot/EFI/arch/grubx64.efi
+Depends = sbsigntools
+Depends = coreutils
